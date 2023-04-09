@@ -1,0 +1,1 @@
+URL = `https://api.openweathermap.org/data/2.5/weather?q=Ernakulam&appid=55ac5c584ff8bf5c6b35049608ecff56`
