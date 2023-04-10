@@ -31,15 +31,11 @@ function Search() {
       {isLoading ? (
         <p>Loading...</p>
       ) : (
-        <>
-    {searchResult && searchResult.length === 0 ? (
-      <>
-        <h1>{searchResult.main.temp}</h1>
-      </>
-    ): (
-      <p>No results found</p>
-    )}
-  </>
+        searchResult && searchResult.main && searchResult.main.temp ? ( // Add null checks for searchResult and main.temp
+          <h1>{searchResult.main.temp}</h1>
+        ) : (
+          <p>Temperature not found</p> // Display "Temperature not found" message
+        )
       )}
     </div>
   );
