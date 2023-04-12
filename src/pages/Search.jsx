@@ -39,12 +39,13 @@ function Search() {
   return (
     <div>
       <input
+      className="input-field"
         type="text"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
       />
-      <button onClick={handleSearch}>Search</button>
-      <button onClick={handleClear}>Clear</button>
+      <button className="button-18" role="button" onClick={handleSearch}>Search</button>
+      <button className="button-18" role="button" onClick={handleClear}>Clear</button>
       {isLoading ? (
         <div class="spinner">
         <div class="dot1"></div>
@@ -54,17 +55,21 @@ function Search() {
         searchResult && searchResult.main && searchResult.main.temp && searchResult.name ? ( // Add null checks for searchResult and main.temp
 
           <>
-            <h1>Weather in {searchResult.name}</h1>
+           <div className="container main-container card">
+           <h1>{searchResult.name}</h1>
             <div>
               {weatherIcon()} {searchResult.weather[0].description}
             </div>
             <div>Temperature: {searchResult.main.temp}°C</div>
             <div>Humidity: {searchResult.main.humidity}%</div>
             <div>Wind Speed: {searchResult.wind.speed} m/s</div>
+           </div>
           </>
 
         ) : (
-          <p>Temperature not found</p> // Display "Temperature not found" message
+          <div className="card container">
+            <h4>Temperature not found</h4> 
+          </div>
         )
       )}
     </div>

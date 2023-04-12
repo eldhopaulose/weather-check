@@ -1,12 +1,17 @@
-.App{
-  height: 100vh;
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@200&display=swap');
 
-  background: #CCCCCC;
-  
+.App {
+  height: 100vh;
+  background: #202020;
   display: flex;
-  
   align-items: center;
-  
   justify-content: center;
+  
+
+  background-image: url('https://4kwallpapers.com/images/wallpapers/clear-sky-sunset-dusk-blue-sky-starry-sky-horizon-beach-1280x800-4044.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
 
 }
