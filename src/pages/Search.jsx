@@ -1,8 +1,15 @@
 import React, { useState } from "react";
-import { FaCloud, FaSun, FaCloudSun, FaCloudRain, FaSnowflake } from 'react-icons/fa';
+import {
+  FaCloud,
+  FaSun,
+  FaCloudSun,
+  FaCloudRain,
+  FaSnowflake,
+} from "react-icons/fa";
+import { BsDropletFill, BsWind } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
 import { weatherSearchAsync, clearSearch } from "../redux/weatherSlice";
-import './Search.scss'
+import "./Search.scss";
 
 function Search() {
   const dispatch = useDispatch();
@@ -39,38 +46,51 @@ function Search() {
   return (
     <div>
       <input
-      className="input-field"
+        className="input-field"
         type="text"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
       />
-      <button className="button-18" role="button" onClick={handleSearch}>Search</button>
-      <button className="button-18" role="button" onClick={handleClear}>Clear</button>
+      <button className="button-18" role="button" type="submit" onClick={handleSearch}>
+        Search
+      </button>
+      <button className="button-18" role="button" onClick={handleClear}>
+        Clear
+      </button>
       {isLoading ? (
-        <div class="spinner">
-        <div class="dot1"></div>
-        <div class="dot2"></div>
-      </div>
-      ) : (
-        searchResult && searchResult.main && searchResult.main.temp && searchResult.name ? ( // Add null checks for searchResult and main.temp
-
-          <>
-           <div className="container main-container card">
-           <h1>{searchResult.name}</h1>
+        <div className="spinner">
+          <div className="dot1"></div>
+          <div className="dot2"></div>
+        </div>
+      ) : searchResult &&
+        searchResult.main &&
+        searchResult.main.temp &&
+        searchResult.name ? ( // Add null checks for searchResult and main.temp
+        <>
+          <div className="container main-container card">
+            <h1 className="">{searchResult.name}</h1>
             <div>
-              {weatherIcon()} {searchResult.weather[0].description}
+            <h1 className="componet-center">{Math.round(searchResult.main.temp - 273.15)}°C</h1>
             </div>
-            <div>Temperature: {searchResult.main.temp}°C</div>
-            <div>Humidity: {searchResult.main.humidity}%</div>
-            <div>Wind Speed: {searchResult.wind.speed} m/s</div>
-           </div>
-          </>
-
-        ) : (
-          <div className="card container">
-            <h4>Temperature not found</h4> 
+            <div className="componet-center">
+             <h5>{searchResult.weather[0].description}</h5>
+            </div>
+            <div>
+              <h4><BsDropletFill /> {searchResult.main.humidity}%</h4>
+            </div>
+            <div>
+              <h4><BsWind /> {searchResult.wind.speed} m/s</h4>
+              <h1 className="weather-icon">{weatherIcon()}</h1>
+            </div>
+            <div>
+            
+            </div>
           </div>
-        )
+        </>
+      ) : (
+        <div className="card container">
+          <h4>No weather data found </h4>
+        </div>
       )}
     </div>
   );

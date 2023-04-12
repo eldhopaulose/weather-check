@@ -156,10 +156,25 @@ button {
 }
 .container {
   font-family: "Kanit", sans-serif;
-  color: #09223b;
+  color: #1C2331;
   font-size: large;
 }
-.main-container{
+.main-container {
   margin-left: -23px;
   padding: 40px;
+}
+.componet-center{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.weather-icon{
+  display: inline;
+  float: right;
+  margin: -2rem;
+  font-size: 75px;
+}
+h4{
+  display: inline;
+  position: relative;
 }
